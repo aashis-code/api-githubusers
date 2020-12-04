@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="demo"></p>
+    <script>
+        var url=`https://api.github.com/users`
+        fetch(url)
+        .then(response=>response.json())
+        .then(data=> users(data))
+        var output=" "
+        function users(data){
+            for(var i in data){
+               output+= 
+               `<div style="margin:20px; padding:10px; background-color:steelblue; text-align:center">
+               <img src="${data[i].avatar_url}" style="display:block; margin:auto; max-width:100%; height:auto"/>
+               <div>ID: ${data[i].id}</div>
+               <div style="color:green; font-size:30px"> ${data[i].login}</div>
+               </div>
+               `
+               document.getElementById('demo').innerHTML=output
+                
+            }
+           
+        }
+ </script>
+</body>
+</html>
